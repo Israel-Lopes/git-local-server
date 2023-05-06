@@ -25,7 +25,6 @@ No modo interativo do shell siga os seguintes passos:
 2. Criação de um repositório Git.
 3. Criação de um usuário Git
 4. Configuração das chaves SSH.
-5. Configuração do acesso remoto.
 
 ### Configurando servidor SSH: 1#
 
@@ -101,6 +100,37 @@ Para permitir que o usuário Git tenha acesso ao diretório de repositórios, ce
 
 ### Configuração das chaves SSH: 4#
 
+Agora vamos configurar a chave ssh para o usuario, seguindo passos abaixo.
 
+Alterne para o usuário:
 
-### Configuração do acesso remoto #5
+``su - <nome-do-usuario>``
+
+Caso o diretorio ``~/.ssh`` nao existe, basta criar um com ``cd ~/.ssh`` 
+do contrario, pule essa etapa.
+
+Agora gere as chaves ``ssh``.
+
+``ssh-keygen``
+
+OBS: As chaves publicas nao devem ser criadas no servidor, e sim na sua maquina local. Elas serao
+usadas como credencial para subir dados ao servidor Git.
+
+Agora abra o arquivo ``id_rsa.pu`` e copie a chave publica e em seu computador local
+adicione a chave publica ao arquivo ``~/.ssh/authorized_key`` que estara no servidor, lembre que ao fazer isso voce deve estar logado com seu usuario ``su - <nome-do-usuario>``.
+
+Verfique tambem as permissoes do arquivo ``authorized_keys`` usando:
+
+``chmod 600 ~/.ssh/authorized_keys``
+
+Isso garante que apenas seu usuario tenha permissao de leitura do arquivo.
+
+por fim reinicialize o servidor ssh para alteracoes entrarem em vigor:
+
+``sudo service ssh restart``
+
+Agora a chave ``ssh``esta configurada.
+
+Agora na sua maquina local basta clona o projeto com o seguinte:
+
+``git clone git@seu-servidor-git:/caminho/para/repositorio.git``
