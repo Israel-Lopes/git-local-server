@@ -1,4 +1,4 @@
-# Servidor git
+# ![banner](img/localhost-git-server.jpg) Servidor git
 
 Essa documentação tem como objetivo ensinar a criar seu proprio servidor pessoal git. Para isso,
 basta fazer git push do projeto e seguir os passos descritos abaixo. 
@@ -134,3 +134,25 @@ Agora a chave ``ssh``esta configurada.
 Agora na sua maquina local basta clona o projeto com o seguinte:
 
 ``git clone git@seu-servidor-git:/caminho/para/repositorio.git``
+
+
+### Especionando o diretorio do servidor
+
+```
+root@a6f187473170:/gitrepo# ls
+HEAD  branches  config  description  hooks  info  objects  refs
+```
+
+Agora uma breve descrição sobre a importancia de cada arquivo e diretorio
+exposto nesse ``ls``.
+
+ - ``HEAD``: O arquivo HEAD é um ponteiro especial que indica a branch atual em que você está trabalhando.
+ - ``branches``: O diretório branches contém os ponteiros para as branches existentes no repositório
+ - ``config``: O arquivo config contém as configurações do repositório Git, como informações do remoto, aliases, hooks, entre outras configurações.
+ - ``description``: O arquivo description é usado por servidores Git remotos para exibir uma descrição do repositório.
+ - ``hooks``: O diretório hooks contém scripts personalizados que podem ser executados em diferentes eventos do Git, como pré-commit, pós-commit, pré-push, entre outros.
+ - ``info``: O diretório info contém arquivos adicionais de informações do repositório, como exclude, que especifica padrões de exclusão para o gitignore.
+ - ``objects``: O diretório objects contém os objetos Git, como commits, árvores e blobs, que armazenam os dados do seu repositório.
+ - ``refs``: O diretório refs contém referências para commits, como branches e tags.
+
+ Esses diretórios e arquivos são criados automaticamente quando você inicializa um repositório Git.
