@@ -61,7 +61,9 @@ Para isso basta fazer: ``mkdir ~/gitrep``
 
 Agora alterne para o usuário Git usando o comando: ``su - <nome-do-usuario>``
 
-Quando você executa o comando ``su - <nome-do-usuario>``, você está efetuando o login como o usuário e assumindo sua identidade. Isso é necessário para executar comandos como o usuário e realizar operações relacionadas ao Git.
+Quando você executa o comando ``su - <nome-do-usuario>``, você está efetuando o login como o usuário 
+e assumindo sua identidade. Isso é necessário para executar comandos como o usuário e realizar 
+operações relacionadas ao Git.
 
 Agora navegue ate o diretorio do projeto: ``cd /gitrepo``
 
@@ -85,16 +87,20 @@ Agora temos que definir uma senha:
 
 ``passwd <senha-do-usuario>``
 
-Agora você precisa gerar um par de chaves SSH para o usuário Git. Essas chaves serão usadas para autenticação ao acessar o servidor Git remotamente. Ainda dentro do shell do servidor Git, execute o seguinte comando como usuário "git":
+Agora você precisa gerar um par de chaves SSH para o usuário Git. Essas chaves serão usadas para
+autenticação ao acessar o servidor Git remotamente. Ainda dentro do shell do servidor Git,
+execute o seguinte comando como usuário "git":
 
 ``su - git``
 
 ``ssh-keygen -t rsa``
 
-Isso irá gerar uma chave SSH pública e privada para o usuário Git. 
-Quando solicitado, você pode pressionar Enter para aceitar o local padrão e não definir uma senha para a chave.
+Isso irá gerar uma chave SSH pública e privada para o usuário Git. Quando solicitado, 
+você pode pressionar Enter para aceitar o local padrão e não definir uma senha para a chave.
 
-Para permitir que o usuário Git tenha acesso ao diretório de repositórios, certifique-se de que o diretório /gitrepo (ou o diretório onde você pretende armazenar os repositórios) tenha as permissões corretas. Dentro do shell do servidor Git, execute o seguinte comando:
+Para permitir que o usuário Git tenha acesso ao diretório de repositórios, certifique-se de 
+que o diretório /gitrepo (ou o diretório onde você pretende armazenar os repositórios) 
+tenha as permissões corretas. Dentro do shell do servidor Git, execute o seguinte comando:
 
 ``chown -R git:git /gitrepo``
 
@@ -117,7 +123,8 @@ OBS: As chaves publicas nao devem ser criadas no servidor, e sim na sua maquina 
 usadas como credencial para subir dados ao servidor Git.
 
 Agora abra o arquivo ``id_rsa.pu`` e copie a chave publica e em seu computador local
-adicione a chave publica ao arquivo ``~/.ssh/authorized_key`` que estara no servidor, lembre que ao fazer isso voce deve estar logado com seu usuario ``su - <nome-do-usuario>``.
+adicione a chave publica ao arquivo ``~/.ssh/authorized_key`` que estara no servidor, lembre
+que ao fazer isso voce deve estar logado com seu usuario ``su - <nome-do-usuario>``.
 
 Verfique tambem as permissoes do arquivo ``authorized_keys`` usando:
 
@@ -148,11 +155,16 @@ exposto nesse ``ls``.
 
  - ``HEAD``: O arquivo HEAD é um ponteiro especial que indica a branch atual em que você está trabalhando.
  - ``branches``: O diretório branches contém os ponteiros para as branches existentes no repositório
- - ``config``: O arquivo config contém as configurações do repositório Git, como informações do remoto, aliases, hooks, entre outras configurações.
- - ``description``: O arquivo description é usado por servidores Git remotos para exibir uma descrição do repositório.
- - ``hooks``: O diretório hooks contém scripts personalizados que podem ser executados em diferentes eventos do Git, como pré-commit, pós-commit, pré-push, entre outros.
- - ``info``: O diretório info contém arquivos adicionais de informações do repositório, como exclude, que especifica padrões de exclusão para o gitignore.
- - ``objects``: O diretório objects contém os objetos Git, como commits, árvores e blobs, que armazenam os dados do seu repositório.
+ - ``config``: O arquivo config contém as configurações do repositório Git, como informações 
+    do remoto, aliases, hooks, entre outras configurações.
+ - ``description``: O arquivo description é usado por servidores Git remotos para 
+    exibir uma descrição do repositório.
+ - ``hooks``: O diretório hooks contém scripts personalizados que podem ser executados em diferentes 
+    eventos do Git, como pré-commit, pós-commit, pré-push, entre outros.
+ - ``info``: O diretório info contém arquivos adicionais de informações do repositório, como exclude, 
+    que especifica padrões de exclusão para o gitignore.
+ - ``objects``: O diretório objects contém os objetos Git, como commits, árvores e blobs, que 
+    armazenam os dados do seu repositório.
  - ``refs``: O diretório refs contém referências para commits, como branches e tags.
 
  Esses diretórios e arquivos são criados automaticamente quando você inicializa um repositório Git.
